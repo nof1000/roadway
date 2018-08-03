@@ -1,0 +1,18 @@
+{
+  "name": "roadway",
+  "version": "1.0.0-rc1",
+  "description": "The simple input stream with frames to array-like objects",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha index.test.js && npm run lint"
+  },
+  "author": "Denis Maslennikov <mrdenniska@gmail.com> (nofach.co)",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.2.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "mocha": "^5.2.0"
+  }
+}
