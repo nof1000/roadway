@@ -20,8 +20,17 @@ class BasicError extends Error {
     }
 }
 
-class InvalidInputError extends BasicError {}
-class EmptyBufferError extends BasicError {}
+class EmptyBufferError extends BasicError {
+    constructor() {
+        super('before flush the buffer, must start recording');
+    }
+}
+
+class InvalidInputError extends BasicError {
+    constructor() {
+        super('expected String, Array or Array-Like Object');
+    }
+}
 
 /** Methods */
 function isValidInput(input) {
@@ -86,7 +95,7 @@ class Roadway {
         let result = null;
 
         if (this.framedSlice < 0) {
-            throw new EmptyBufferError('');
+            throw new EmptyBufferError();
         }
 
         if (this.input.slice) {
