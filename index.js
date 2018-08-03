@@ -22,7 +22,6 @@ class BasicError extends Error {
 
 class InvalidInputError extends BasicError {}
 class EmptyBufferError extends BasicError {}
-class FramedError extends BasicError {}
 
 /** Methods */
 function isValidInput(input) {
@@ -41,8 +40,7 @@ function slice(target, begin, end) {
 
 /** Implementation */
 class Roadway {
-    constructor(input, options = { framed: false }) {
-        this.options = options;
+    constructor(input) {
         this.framedSlice = -1;
         this.cursor = 0;
 
@@ -87,10 +85,6 @@ class Roadway {
     flush() {
         let result = null;
 
-        if (!this.options.framed) {
-            throw new FramedError('');
-        }
-
         if (this.framedSlice < 0) {
             throw new EmptyBufferError('');
         }
@@ -106,10 +100,6 @@ class Roadway {
     }
 
     record() {
-        if (!this.options.framed) {
-            throw new FramedError('');
-        }
-
         this.framedSlice = this.cursor;
     }
 
